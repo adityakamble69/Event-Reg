@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Admin Dashboard — EventReg</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="page">
+
+        <nav class="navbar">
+            <div class="navbar__inner">
+                <a class="brand" href="admin.html">
+                    <span class="brand__mark">ER</span>
+                    <span data-event-name>EventReg</span>
+                    <span class="badge badge--track">Admin</span>
+                </a>
+                <div class="nav-links">
+                    <a href="checkin.html">Check-in</a>
+                    <button type="button" class="btn btn--ghost btn--sm" id="logoutBtn">Sign out</button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main main--wide">
+            <header class="page-head">
+                <div>
+                    <h1 class="page-head__title">Dashboard</h1>
+                    <p class="page-head__subtitle" id="dashSubtitle">Live registration &amp; attendance data</p>
+                </div>
+                <div class="page-head__actions">
+                    <button type="button" class="btn btn--secondary btn--sm" id="refreshBtn">Refresh</button>
+                    <button type="button" class="btn btn--primary btn--sm" id="exportBtn">Export CSV</button>
+                </div>
+            </header>
+
+            <section class="stats">
+                <div class="stat-card"><span class="stat-card__label">Teams registered</span><span
+                        class="stat-card__value" id="statTotal">—</span></div>
+                <div class="stat-card stat-card--success"><span class="stat-card__label">Checked in</span><span
+                        class="stat-card__value" id="statCheckedIn">—</span></div>
+                <div class="stat-card stat-card--muted"><span class="stat-card__label">Pending</span><span
+                        class="stat-card__value" id="statPending">—</span></div>
+                <div class="stat-card stat-card--accent"><span class="stat-card__label">Check-in rate</span><span
+                        class="stat-card__value" id="statRate">—</span></div>
+            </section>
+
+            <section class="card card--table">
+                <div class="table-toolbar">
+                    <div class="search">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="search" id="searchInput" placeholder="Search team, leader, email, ID, college…" />
+                    </div>
+                    <div class="filters" role="group">
+                        <button type="button" class="chip is-active" data-filter="all">All</button>
+                        <button type="button" class="chip" data-filter="checked">Checked in</button>
+                        <button type="button" class="chip" data-filter="pending">Pending</button>
+                    </div>
+                </div>
+
+                <div class="table-wrap" id="tableWrap">
+                    <table class="table table--teams">
+                        <thead>
+                            <tr>
+                                <th>Reg ID</th>
+                                <th>Team</th>
+                                <th>Leader</th>
+                                <th>Email</th>
+                                <th>College</th>
+                                <th>Year</th>
+                                <th>Members</th>
+                                <th>Status</th>
+                                <th class="th-actions">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="empty" id="tableEmpty" hidden>
+                    <div class="empty__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    </div>
+                    <p class="empty__text" id="tableEmptyText">No registrations yet.</p>
+                </div>
+
+                <div class="table-skeleton" id="tableSkeleton">
+                    <div class="skeleton-row"></div>
+                    <div class="skeleton-row"></div>
+                    <div class="skeleton-row"></div>
+                    <div class="skeleton-row"></div>
+                    <div class="skeleton-row"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer"><span data-event-name>EventReg</span> · Admin dashboard</footer>
+    </div>
+
+    <!-- ============ TEAM DETAIL MODAL ============ -->
+    <div class="modal" id="detailModal" hidden>
+        <div class="modal__backdrop" data-close-modal></div>
+        <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button type="button" class="modal__close" data-close-modal aria-label="Close">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" style="width:18px;height:18px;">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal__content" id="modalContent"></div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

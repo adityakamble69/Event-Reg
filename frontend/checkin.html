@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Check-in desk — EventReg</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="page">
+
+        <nav class="navbar">
+            <div class="navbar__inner">
+                <a class="brand" href="checkin.html">
+                    <span class="brand__mark">ER</span>
+                    <span data-event-name>EventReg</span>
+                    <span class="badge badge--track">Check-in</span>
+                </a>
+                <div class="nav-links">
+                    <a href="admin.html">Admin</a>
+                    <button type="button" class="btn btn--ghost btn--sm" id="logoutBtn">Sign out</button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main main--wide">
+            <header class="page-head">
+                <div>
+                    <h1 class="page-head__title">Check-in desk</h1>
+                    <p class="page-head__subtitle">Scan a QR code or type a registration ID</p>
+                </div>
+                <div class="page-head__actions">
+                    <button type="button" class="btn btn--secondary btn--sm" id="refreshStatsBtn">Refresh
+                        counts</button>
+                </div>
+            </header>
+
+            <section class="stats stats--compact">
+                <div class="stat-card"><span class="stat-card__label">Registered</span><span class="stat-card__value"
+                        id="statTotal">—</span></div>
+                <div class="stat-card stat-card--success"><span class="stat-card__label">Checked in</span><span
+                        class="stat-card__value" id="statCheckedIn">—</span></div>
+                <div class="stat-card stat-card--muted"><span class="stat-card__label">Remaining</span><span
+                        class="stat-card__value" id="statPending">—</span></div>
+            </section>
+
+            <div class="checkin-grid">
+                <section class="card">
+                    <div class="card__head">
+                        <h2 class="card__title">QR scanner</h2>
+                        <p class="card__subtitle">Point the attendee's QR code at the camera.</p>
+                    </div>
+
+                    <div class="reader-shell">
+                        <div id="reader" class="reader"></div>
+                        <div class="reader__placeholder" id="readerPlaceholder">
+                            <p>Camera is off</p>
+                        </div>
+                    </div>
+
+                    <div class="reader__controls">
+                        <button type="button" class="btn btn--primary btn--block" id="startScanBtn">Start
+                            camera</button>
+                        <button type="button" class="btn btn--secondary btn--block" id="stopScanBtn" hidden>Stop
+                            camera</button>
+                    </div>
+
+                    <p class="reader__hint" id="readerHint">Camera access requires HTTPS or localhost.</p>
+                </section>
+
+                <section class="checkin-side">
+                    <div class="card card--result">
+                        <div class="result result--idle" id="result">
+                            <div class="result__icon" id="resultIcon"></div>
+                            <div class="result__body">
+                                <div class="result__title" id="resultTitle">Ready to scan</div>
+                                <div class="result__text" id="resultText">Waiting for a QR code or manual entry.</div>
+                                <div class="result__meta" id="resultMeta" hidden></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__head">
+                            <h2 class="card__title">Manual entry</h2>
+                        </div>
+                        <form id="manualForm" class="manual-form">
+                            <div class="field">
+                                <label for="manualRegId">Registration ID</label>
+                                <input type="text" id="manualRegId" placeholder="EVT-A1B2C3" autocomplete="off"
+                                    autocapitalize="characters" spellcheck="false" />
+                            </div>
+                            <button type="submit" class="btn btn--primary btn--block" id="manualBtn">Check in</button>
+                        </form>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__head">
+                            <h2 class="card__title">Recent check-ins</h2>
+                        </div>
+                        <ul class="recent" id="recentList">
+                            <li class="recent__empty">No check-ins yet this session.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="footer"><span data-event-name>EventReg</span> · Check-in desk</footer>
+    </div>
+
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/checkin.js"></script>
+</body>
+
+</html>

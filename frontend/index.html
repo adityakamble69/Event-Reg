@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Register your team for the event." />
+  <title>Team Registration — EventReg</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="page">
+
+    <nav class="navbar">
+      <div class="navbar__inner">
+        <a class="brand" href="index.html">
+          <span class="brand__mark">ER</span>
+          <span data-event-name>EventReg</span>
+        </a>
+      </div>
+    </nav>
+
+    <main class="main main--form">
+      <section class="hero">
+        <span class="hero__eyebrow">Team registration</span>
+        <h1 class="hero__title" data-event-name>EventReg</h1>
+        <p class="hero__subtitle" data-event-tagline>Register your team in under two minutes.</p>
+        <div class="hero__meta" id="heroMeta" hidden></div>
+      </section>
+
+      <section class="card card--form" id="formCard">
+        <div class="card__head">
+          <h2 class="card__title">Team details</h2>
+          <p class="card__subtitle">All fields are required. One team = one registration.</p>
+        </div>
+
+        <form id="registerForm" novalidate>
+
+          <!-- ========== 1. TEAM LEADER ========== -->
+          <div class="form-section">
+            <h3 class="form-section__title">Team Leader</h3>
+            <p class="form-section__hint">Primary contact for this team.</p>
+
+            <div class="field">
+              <label for="leaderName">Full name</label>
+              <input type="text" id="leaderName" autocomplete="name" placeholder="Ada Lovelace" maxlength="80"
+                required />
+              <p class="field__error" data-error-for="leaderName" hidden></p>
+            </div>
+            <div class="field">
+              <label for="leaderEmail">Email address</label>
+              <input type="email" id="leaderEmail" autocomplete="email" placeholder="leader@college.edu" maxlength="120"
+                required />
+              <p class="field__error" data-error-for="leaderEmail" hidden></p>
+            </div>
+            <div class="field">
+              <label for="leaderPhone">Phone number</label>
+              <input type="tel" id="leaderPhone" autocomplete="tel" placeholder="+91 98765 43210" maxlength="20"
+                required />
+              <p class="field__error" data-error-for="leaderPhone" hidden></p>
+            </div>
+          </div>
+
+          <!-- ========== 2. TEAM INFO ========== -->
+          <div class="form-section">
+            <h3 class="form-section__title">Team &amp; College</h3>
+
+            <div class="field">
+              <label for="teamName">Team name</label>
+              <input type="text" id="teamName" placeholder="Team Phoenix" maxlength="60" required />
+              <p class="field__error" data-error-for="teamName" hidden></p>
+            </div>
+            <div class="field">
+              <label for="college">College / Institution</label>
+              <input type="text" id="college" placeholder="IIT Bombay" maxlength="100" required />
+              <p class="field__error" data-error-for="college" hidden></p>
+            </div>
+            <div class="field">
+              <label for="yearOfStudy">Year of study</label>
+              <select id="yearOfStudy" required>
+                <option value="">Select year…</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+              </select>
+              <p class="field__error" data-error-for="yearOfStudy" hidden></p>
+            </div>
+            <div class="field">
+              <label for="branch">Branch / Department</label>
+              <input type="text" id="branch" placeholder="Computer Science" maxlength="80" required />
+              <p class="field__error" data-error-for="branch" hidden></p>
+            </div>
+          </div>
+
+          <!-- ========== 3. TEAM MEMBERS ========== -->
+          <div class="form-section">
+            <h3 class="form-section__title">Team Members</h3>
+            <p class="form-section__hint">3 members excluding the leader (4 total).</p>
+
+            <div class="member-card">
+              <div class="member-card__title">Member 1</div>
+              <div class="field">
+                <label for="member1Name">Full name</label>
+                <input type="text" id="member1Name" placeholder="Alan Turing" maxlength="80" required />
+                <p class="field__error" data-error-for="member1Name" hidden></p>
+              </div>
+              <div class="field">
+                <label for="member1Email">Email address</label>
+                <input type="email" id="member1Email" placeholder="alan@college.edu" maxlength="120" required />
+                <p class="field__error" data-error-for="member1Email" hidden></p>
+              </div>
+              <div class="field">
+                <label for="member1Phone">Phone number</label>
+                <input type="tel" id="member1Phone" placeholder="+91 98765 43210" maxlength="20" required />
+                <p class="field__error" data-error-for="member1Phone" hidden></p>
+              </div>
+            </div>
+
+            <div class="member-card">
+              <div class="member-card__title">Member 2</div>
+              <div class="field">
+                <label for="member2Name">Full name</label>
+                <input type="text" id="member2Name" placeholder="Grace Hopper" maxlength="80" required />
+                <p class="field__error" data-error-for="member2Name" hidden></p>
+              </div>
+              <div class="field">
+                <label for="member2Email">Email address</label>
+                <input type="email" id="member2Email" placeholder="grace@college.edu" maxlength="120" required />
+                <p class="field__error" data-error-for="member2Email" hidden></p>
+              </div>
+              <div class="field">
+                <label for="member2Phone">Phone number</label>
+                <input type="tel" id="member2Phone" placeholder="+91 98765 43210" maxlength="20" required />
+                <p class="field__error" data-error-for="member2Phone" hidden></p>
+              </div>
+            </div>
+
+            <div class="member-card">
+              <div class="member-card__title">Member 3</div>
+              <div class="field">
+                <label for="member3Name">Full name</label>
+                <input type="text" id="member3Name" placeholder="Linus Torvalds" maxlength="80" required />
+                <p class="field__error" data-error-for="member3Name" hidden></p>
+              </div>
+              <div class="field">
+                <label for="member3Email">Email address</label>
+                <input type="email" id="member3Email" placeholder="linus@college.edu" maxlength="120" required />
+                <p class="field__error" data-error-for="member3Email" hidden></p>
+              </div>
+              <div class="field">
+                <label for="member3Phone">Phone number</label>
+                <input type="tel" id="member3Phone" placeholder="+91 98765 43210" maxlength="20" required />
+                <p class="field__error" data-error-for="member3Phone" hidden></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========== 4. PAYMENT ========== -->
+          <div class="form-section">
+            <h3 class="form-section__title">Payment</h3>
+            <p class="form-section__hint">Scan the QR, pay the entry fee, then upload the screenshot.</p>
+
+            <div class="payment-box">
+              <img id="paymentQr" src="assets/payment-qr.png" alt="Payment QR code" />
+              <div class="payment-box__label">Scan to pay</div>
+              <button type="button" class="payment-box__upi" id="upiCopyBtn" title="Click to copy">
+                <span id="upiText">—</span>
+              </button>
+            </div>
+
+            <div class="field">
+              <label for="paymentScreenshot">Payment screenshot</label>
+              <label class="file-drop" id="fileDrop" for="paymentScreenshot">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" style="width:32px;height:32px;opacity:0.6;">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <div class="file-drop__text" id="fileDropText">Tap to upload screenshot (JPG/PNG, max 3 MB)</div>
+                <input type="file" id="paymentScreenshot" accept="image/*" />
+                <img class="file-drop__preview" id="filePreview" hidden />
+              </label>
+              <p class="field__error" data-error-for="paymentScreenshot" hidden></p>
+            </div>
+          </div>
+
+          <div class="form__alert" id="formAlert" hidden></div>
+
+          <button type="submit" class="btn btn--primary btn--block" id="submitBtn">
+            Complete team registration
+          </button>
+        </form>
+      </section>
+
+      <!-- ========== SUCCESS ========== -->
+      <section class="card card--success" id="successCard" hidden>
+        <div class="success__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h2 class="success__title">Team registered!</h2>
+        <p class="success__text">Confirmation email with your QR code is on its way to the leader.</p>
+
+        <div class="success__qr">
+          <img id="successQr" src="" alt="Team check-in QR code" width="200" height="200" />
+          <div class="success__idlabel">Registration ID</div>
+          <div class="success__id" id="successRegId">—</div>
+          <div class="success__team" id="successTeamName">—</div>
+        </div>
+
+        <div class="success__note" id="emailNote">Check your inbox for the confirmation email.</div>
+        <div class="success__actions">
+          <button type="button" class="btn btn--secondary" id="registerAnotherBtn">Register another team</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span data-event-name>EventReg</span> · Powered by Google Apps Script &amp; Sheets
+    </footer>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/register.js"></script>
+</body>
+
+</html>
